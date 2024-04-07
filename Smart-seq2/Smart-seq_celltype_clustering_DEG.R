@@ -13,7 +13,7 @@ nor_tpm<- apply(TPM, 2, function(x) log2(x+1))
 
 KS_object<-CreateSeuratObject(nor_tpm, meta.data = metadata, min.cells = 10,project = "KS_scRNAseq")
 
-sample.all.qc.list <- SplitObject(object = KS_object, split.by = "origins")
+sample.all.qc.list <- SplitObject(object = KS_object, split.by = "source")
 for (i in 1:length(sample.all.qc.list)) {
   sample.all.qc.list[[i]] <- FindVariableFeatures(
     sample.all.qc.list[[i]], selection.method = "vst",
