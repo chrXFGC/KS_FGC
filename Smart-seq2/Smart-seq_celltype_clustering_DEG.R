@@ -43,7 +43,6 @@ p2<-DimPlot(sample.all.qc.anchor, reduction = "umap", label = TRUE, pt.size = .1
 
 plot_grid(p1, p2)
 
-#######Get DEG of FGCs
 new.cluster.ids <- c("Early_FGC","Late_FGC","DLC", "Early_FGC",
                        "LP", "Late_FGC","SC")
 
@@ -59,7 +58,7 @@ anchored_top10 <-anchored.markers %>% group_by(cluster) %>% top_n(n = 10, wt = a
 DoHeatmap(object = subset(sample.all.qc.anchor,downsample = 500), features = anchored_top10$gene,group.bar = TRUE,
           size=4,angle=45,draw.lines=T)
 
-### Marker gene plot
+# Marker gene plot
 Early_FGC_marker<-c("NANOG","POU5F1","LIN28A","TFAP2C","NANOS3")
 Late_FGC_marker<-c("DDX4","SIX1","TEX15","PIWIL2","PIWIL4")
 LP_marker<-c("DCN", "COL1A1")
@@ -71,7 +70,7 @@ plot_features <- c(LP_marker,DLC_marker,SC,
 DotPlot(sample.all.qc.anchor, features = plot_features)+
   RotatedAxis()
 
-########## get  DEG of FGCs
+# get  DEG of FGCs
 
 Idents(sample.all.qc.anchor) <- sample.all.qc.anchor@meta.data$identi
 
