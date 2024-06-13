@@ -5,7 +5,7 @@ rm(list=ls())
 Packages <- c("dplyr", "ggplot2", "tibble","data.table","ggpubr","Seurat","ggsci","cowplot")
 lapply(Packages, require, character.only = TRUE)
 
-#############
+############# Create Seruat object ######
 TPM<-read.table("/Data/FGC_TPM.xls")
 metadata<-fread("/Data/FGC_Metadata.xls")%>%column_to_rownames(var = "sample_name")
 nor_tpm<- apply(TPM, 2, function(x) log2(x+1))
