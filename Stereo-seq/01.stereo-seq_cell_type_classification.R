@@ -18,7 +18,7 @@ ST.data.TNC16 <- read.table("TNC16_D03058F1_hg19/D03058F1.tissue.gem", sep = "\t
 ST.data.TNC18 <- read.table("TNC18_D03058E6_hg19/D03058E6.tissue.gem", sep = "\t", header = T, check.names = F)# read data matrix
 ST.data.TKS5 <- read.table("TKS5_SS200000513TL_C5_hg19/SS200000513TL_C5.tissue.gem", sep = "\t", header = T, check.names = F)# read data matrix
 ST.data.TKS6 <- read.table("TKS6_SS200000513TL_C6_hg19/SS200000513TL_C6.tissue.gem", sep = "\t", header = T, check.names = F)# read data matrix
-## define a function to Create Stereo-seq object based on DoubletFinder package documentation.
+## define a function to Create Stereo-seq object based on https://github.com/yangmean/Spatiotemporal_mouse_implantation_sites/blob/main/02.%20Spaitial_transcriptome_integration.R
 Creat.ST.object <- function(ST.data, bin){
   ST.data.bin40 <- ST.data
   ST.data.bin40$x1 <- trunc(ST.data.bin40$x/bin) * bin
