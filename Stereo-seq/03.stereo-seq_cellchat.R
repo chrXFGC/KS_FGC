@@ -200,13 +200,20 @@ pairLR.use <- extractEnrichedLR(cellchat, signaling = c("CDH"))
 pairLR.use  = pairLR.use[c(1),,drop=F]
 a=netVisual_bubble(cellchat, comparison = c(1,2),sources.use = c(1,2,9,10,11), targets.use = c(1,2,9,10,11),
                    pairLR.use = pairLR.use, remove.isolate = TRUE,max.dataset = 2, title.name = "Decreased signaling", angle.x = 45, color.text = c("#00AFBB","#E7B800"))
+## bubble plot showing the Comparison result 
 A=a[["data"]]
-A$dataset=factor(A$dataset,levels = c("Ctrl_M","KS"),ordered = T)
+unique(A$group.names)
+my_level=unique(A$group.names)
+my_level <- my_level[length(my_level):1]
+A$group.names=factor(A$group.names,levels = my_level,ordered = T)
+unique(A$group.names)
+my_level=unique(A$group.names)
+my_level <- my_level[length(my_level):1]
+A$group.names=factor(A$group.names,levels = my_level,ordered = T)
 ## set colors
 bk=c(0,0.03,0.06,0.09,0.12,0.15,0.18,0.21,0.24,0.27,0.30)
 col_use<-c(colorRampPalette(colors = c('#FFE4E4',"#FF9595","#FF6060","#FF4646","#ff0000","#E30000"))(length(bk)/2),
            colorRampPalette(colors = c("#BE0000","#8b0000","#650000","#460000","#280000"))(length(bk)/2))
-## bubble plot showing the Comparison result 
 pdf(file="sptial_CDH2_buble_plot.pdf",width = 5,height = 7.5)
 print(
     ggplot(A, aes(x = dataset, y = group.names, size = pval, fill = prob, color = prob)) +
